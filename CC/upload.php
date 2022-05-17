@@ -19,14 +19,21 @@ if(isset($_FILES["upload"])){
         'image/jpeg',
         'image/webp'
     ];
-    if(!in_array($image->type, $ext)){
+    if(!in_array(mime_content_type($image->tmp_name), $ext)){
         array_push($errorMsg, "Image Only!");
     }
-    echo "Upload Success";
-    echo "<pre>";
-    // var_dump($_FILES);
-    var_dump($image);
-    var_dump($errorMsg);
+    if(empty($errorMsg)){
+        echo "Upload Success";
+    } else {
+        foreach($errorMsg as $msg){
+            echo $msg;
+            die;
+        }
+    }
+    // echo "<pre>";
+    // // var_dump($_FILES);
+    // var_dump($image);
+    // // var_dump($errorMsg);
 } else {
     echo "No Uploaded File";
 }
