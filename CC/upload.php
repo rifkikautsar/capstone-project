@@ -1,8 +1,8 @@
 <?php
 if($_SERVER["REQUEST_METHOD"]=="POST"){
-    if(isset($_FILES["upload"])){
+    if(isset($_FILES['uploads'])){
         //save to object
-        $image = (object) $_FILES['upload'];
+        $image = (object) $_FILES['uploads'];
         if($image->size!=0){
         //create error message array
         $response = [];
@@ -27,8 +27,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         if($response==[]){
             define('BASEURL', $_SERVER['DOCUMENT_ROOT']."/data/project/CC/");
             $path = BASEURL."uploads/";
-            $uploadedFile = $path . basename($_FILES['upload']['name']);
-            if(move_uploaded_file($_FILES['upload']['tmp_name'], $uploadedFile)) {
+            $uploadedFile = $path . basename($_FILES['uploads']['name']);
+            if(move_uploaded_file($_FILES['uploads']['tmp_name'], $uploadedFile)) {
                 http_response_code(200);
                 $response['code'] = 200;
                 $response['data']['message'] = "Upload Success";
