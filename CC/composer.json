@@ -1,5 +1,13 @@
 {
-    "require": {
-        "google/cloud-storage": "^1.27"
-    }
+  "require": {
+    "php": ">= 7.4",
+    "google/cloud-functions-framework": "^1.1",
+    "google/cloud-storage": "^1.27"
+  },
+  "scripts": {
+    "start": [
+      "Composer\\Config::disableProcessTimeout",
+      "php -S localhost:8080 vendor/google/cloud-functions-framework/router.php"
+    ]
+  }
 }

@@ -2,6 +2,7 @@
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     if(isset($_FILES['uploads'])){
         //save to object
+        // var_dump($_FILES['uploads']);die;
         $image = (object) $_FILES['uploads'];
         if($image->size!=0){
         //create error message array

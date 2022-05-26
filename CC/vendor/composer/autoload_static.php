@@ -11,9 +11,14 @@ class ComposerStaticInit3f88f971ee33e6813243e91d37b9522c
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'Symfony\\Polyfill\\Php80\\' => 23,
+        ),
         'R' => 
         array (
             'Rize\\' => 5,
@@ -36,6 +41,7 @@ class ComposerStaticInit3f88f971ee33e6813243e91d37b9522c
             'GuzzleHttp\\' => 11,
             'Google\\Cloud\\Storage\\' => 21,
             'Google\\Cloud\\Core\\' => 18,
+            'Google\\CloudFunctions\\' => 22,
             'Google\\CRC32\\' => 13,
             'Google\\Auth\\' => 12,
         ),
@@ -43,9 +49,17 @@ class ComposerStaticInit3f88f971ee33e6813243e91d37b9522c
         array (
             'Firebase\\JWT\\' => 13,
         ),
+        'C' => 
+        array (
+            'CloudEvents\\' => 12,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Symfony\\Polyfill\\Php80\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
+        ),
         'Rize\\' => 
         array (
             0 => __DIR__ . '/..' . '/rize/uri-template/src/Rize',
@@ -56,8 +70,8 @@ class ComposerStaticInit3f88f971ee33e6813243e91d37b9522c
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -91,6 +105,10 @@ class ComposerStaticInit3f88f971ee33e6813243e91d37b9522c
         array (
             0 => __DIR__ . '/..' . '/google/cloud-core/src',
         ),
+        'Google\\CloudFunctions\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/cloud-functions-framework/src',
+        ),
         'Google\\CRC32\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/crc32/src',
@@ -103,10 +121,19 @@ class ComposerStaticInit3f88f971ee33e6813243e91d37b9522c
         array (
             0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
         ),
+        'CloudEvents\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cloudevents/sdk-php/src',
+        ),
     );
 
     public static $classMap = array (
+        'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
+        'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
+        'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
+        'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
