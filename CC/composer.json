@@ -7,6 +7,7 @@
   "scripts": {
     "start": [
       "Composer\\Config::disableProcessTimeout",
+      "set FUNCTION_TARGET=uploads",
       "php -S localhost:8080 vendor/google/cloud-functions-framework/router.php"
     ]
   }
