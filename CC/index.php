@@ -3,16 +3,30 @@ require_once('vendor/autoload.php');
 
 use Google\CloudFunctions\FunctionsFramework;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\StreamInterface;
+use Psr\Http\Message\UriInterface;
 use Google\Cloud\Storage\StorageClient;
 use Psr\Http\Message\UploadedFileInterface;
 use Psr\Http\Message\ResponseInterface;
 use GuzzleHttp\Psr7\Response;
+use GuzzleHttp\Psr7\LazyOpenStream;
 
 FunctionsFramework::http('uploads', 'uploadFile');
 
 function uploadFile(ServerRequestInterface $request): ResponseInterface
 {
-    header('Content-Type: application/json; charset=utf-8');
+    $headers = ['Access-Control-Allow-Origin' => '*'];
+
+    if ($request->getMethod() === 'OPTIONS') {
+        // Send response to OPTIONS requests
+        $headers = array_merge($headers, [
+            'Access-Control-Allow-Methods' => 'GET',
+            'Access-Control-Allow-Headers' => 'Content-Type',
+            'Access-Control-Max-Age' => '3600'
+        ]);
+        return new Response(204, $headers, '');
+    } else {
+        header('Content-Type: application/json; charset=utf-8');
     if ($request->getMethod() != 'POST') {
         $response['code'] = 405;
         $response['data']['message'] = 'Method Not Allowed: expected POST, found ' . $request->getMethod();
@@ -25,18 +39,16 @@ function uploadFile(ServerRequestInterface $request): ResponseInterface
         $response['data']['message'] = 'Bad Request: content of type "multipart/form-data" not provided, found ' . $contentType;
         return new Response(400, [], json_encode($response));
     }
-    var_dump($request->getUploadedFiles());
-    try {
+
         if($request->getUploadedFiles()['uploads']->getSize()==0) {
             $response['code'] = 400;
             $response['data']['message'] = 'Bad Request: No Photo Uploaded. (Size : ' . $request->getUploadedFiles()['uploads']->getSize(). ")";
             return new Response(400, [], json_encode($response));
         }
-        $type = $request->getUploadedFiles()['uploads']->getClientMediaType();
-        $name = $request->getUploadedFiles()['uploads']->getClientFilename();
+        $type = explode("/", $request->getUploadedFiles()['uploads']->getClientMediaType())[1];
+        $name = uniqid("img-", true) . "." . $type;
         $size = $request->getUploadedFiles()['uploads']->getSize();
         $tmpFile = $request->getUploadedFiles()['uploads']->getStream()->getMetadata('uri');
-
         //Array type of image allow
         $ext = [
             'image/png',
@@ -58,12 +70,16 @@ function uploadFile(ServerRequestInterface $request): ResponseInterface
             $response['data']['message'] = 'Bad Request: Only Accept Image Types!. (current types : ' . $type . ')';
             return new Response(400, [], json_encode($response));
         }
-        infoLog('Processing Image '.$name);
         try {
             $data = file_get_contents($tmpFile);
             $storage = new StorageClient([
-                'keyFilePath' => 'bustling-bot-350614-c80cc103165a.json'
+                'projectId' => 'bustling-bot-350614',
+                'keyFile' => json_decode(file_get_contents('bustling-bot-350614-c80cc103165a.json'), true)
             ]);
+            // var_dump($str);die;
+            // $storage = new StorageClient([
+            //     'keyFilePath' => 'bustling-bot-350614-c80cc103165a.json'
+            // ]);
             $bucketName = 'kulitku-capstone';
             $cloudPath = 'images/' . $name;
             $bucket = $storage->bucket($bucketName);
@@ -76,27 +92,8 @@ function uploadFile(ServerRequestInterface $request): ResponseInterface
         } catch(Exception $e) {
             $response['code'] = 404;
             $response['data']['message'] = json_decode($e->getMessage());
-            errorLog($e->getMessage());
             return new Response(404, [], json_encode($response));
-        }
-    }catch(Exception $e){
-        $response['data']['message'] = json_decode($e->getMessage());
-        errorLog($e->getMessage());
-        return new Response(404, [], json_encode($response));
+        }   
     }
-        
-}
-
-function errorLog($msg): void
-{
-    $stream = fopen('php://stderr', 'wb');
-    $entry = json_encode(['msg' => $msg, 'severity' => 'error'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-    fwrite($stream, $entry . PHP_EOL);
-}
-
-function infoLog($msg): void
-{
-    $stream = fopen('php://stderr', 'wb');
-    $entry = json_encode(['message' => $msg, 'severity' => 'info'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-    fwrite($stream, $entry . PHP_EOL);
+    
 }

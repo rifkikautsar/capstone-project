@@ -2,12 +2,13 @@
   "require": {
     "php": ">= 7.4",
     "google/cloud-functions-framework": "^1.1",
-    "google/cloud-storage": "^1.27"
+    "google/cloud-storage": "^1.27",
+    "guzzlehttp/guzzle": "6.2",
+    "guzzlehttp/psr7": "^2.0"
   },
   "scripts": {
     "start": [
       "Composer\\Config::disableProcessTimeout",
-      "set FUNCTION_TARGET=uploads",
       "php -S localhost:8080 vendor/google/cloud-functions-framework/router.php"
     ]
   }
