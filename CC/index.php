@@ -3,13 +3,11 @@ require_once('vendor/autoload.php');
 
 use Google\CloudFunctions\FunctionsFramework;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
 use Google\Cloud\Storage\StorageClient;
 use Psr\Http\Message\UploadedFileInterface;
 use Psr\Http\Message\ResponseInterface;
 use GuzzleHttp\Psr7\Response;
-use GuzzleHttp\Psr7\LazyOpenStream;
 
 FunctionsFramework::http('uploads', 'uploadFile');
 
