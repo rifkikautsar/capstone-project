@@ -7,7 +7,6 @@ from keras.models import load_model
 import cv2
 from google.cloud import storage
 
-
 model = None
 BUCKET_NAME = "kulitku-capstone"
 # Initialise a client
