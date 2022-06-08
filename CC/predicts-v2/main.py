@@ -2,6 +2,7 @@ from flask import jsonify, make_response, request
 import functions_framework
 import numpy as np
 import os
+from os import path, environ
 from keras.models import load_model
 import cv2
 from google.cloud import storage
@@ -17,11 +18,15 @@ def download_model_file():
     GCS_MODEL_FILE     = "model/model-v3.h5"
     bucket   = client.get_bucket(BUCKET_NAME)
     blob     = bucket.blob(GCS_MODEL_FILE)
-    folder = '/tmp/'
-    if not os.path.exists(folder):
-        os.makedirs(folder)
+    folder = path.dirname(path.abspath(__file__))
+    model_path = folder + "/model-v3.h5"
+    if not os.path.isfile(model_path):
         # Download the file to a destination
-        blob.download_to_filename(folder + "model-v3.h5")
+        blob.download_to_filename(folder + "/model-v3.h5")
+    # if not os.path.exists(folder):
+    #     os.makedirs(folder)
+    #     # Download the file to a destination
+    #     blob.download_to_filename(folder + "/model-v3.h5")
 def handler(request):
     if(request.method == "POST"):
         """HTTP Cloud Function.
@@ -38,7 +43,7 @@ def handler(request):
         if not model:
             download_model_file()
             # model = tf.keras.models.load_model(open("/tmp/model-v3.h5", 'rb'))
-            model = load_model("model-v3.h5")
+            model = load_model("/workspace/model-v3.h5")
             model.compile(loss='categorical_crossentropy',
                 optimizer='adam',
                 metrics=['accuracy'])
