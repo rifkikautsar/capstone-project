@@ -149,7 +149,13 @@ class AddPhotoActivity : AppCompatActivity(), View.OnClickListener{
                                 responseBody.data.message,
                                 Toast.LENGTH_SHORT
                             ).show()
+                            Toast.makeText(
+                                this@AddPhotoActivity,
+                                responseBody.data.result.jsonMemberClass,
+                                Toast.LENGTH_SHORT
+                            ).show()
                             val moveIntent = Intent(this@AddPhotoActivity, BottomNavigationActivity::class.java)
+                            moveIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             startActivity(moveIntent)
                             finish()
                         }
