@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home_base">
+
+    <fragment
+        android:id="@+id/navigation_home_base"
+        android:name="alangsatinantongga.md14.kulitku.fragment.HomeBaseFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home_base" />
+
+    <fragment
+        android:id="@+id/navigation_about"
+        android:name="alangsatinantongga.md14.kulitku.fragment.AboutFragment"
+        android:label="@string/title_about"
+        tools:layout="@layout/fragment_about" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="alangsatinantongga.md14.kulitku.fragment.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

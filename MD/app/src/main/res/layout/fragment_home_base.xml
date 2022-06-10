@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeBaseActivity">
+    tools:context=".fragment.HomeBaseFragment">
 
     <TextView
         android:id="@+id/textView4"
@@ -51,18 +51,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
+
     <ImageButton
         android:id="@+id/btnAddPhoto"
         android:layout_width="120sp"
         android:layout_height="120sp"
         android:background="#FFDF34"
-        android:scaleType="fitXY"
+        android:padding="20dp"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.202"
+        app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:layout_constraintVertical_bias="0.138"
+        app:layout_constraintVertical_bias="0.14"
         app:srcCompat="@drawable/magnifying_glass" />
 
     <TextView
@@ -75,21 +77,39 @@
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.236"
+        app:layout_constraintHorizontal_bias="0.183"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAddPhoto" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnLogout"
+    <TextView
+        android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="184dp"
-        android:background="#DC2F2F"
-        android:text="Log Out"
-        android:textColor="#EFE5E5"
+        android:fontFamily="@font/inter_medium"
+        android:text="Hasil Scan"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.791"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView7" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="120sp"
+        android:layout_height="120sp"
+        android:background="#FF40E48C"
+        android:gravity="center_vertical"
+        android:padding="20dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/list"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.611"
+        app:layout_constraintStart_toEndOf="@+id/btnAddPhoto"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.14" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+   

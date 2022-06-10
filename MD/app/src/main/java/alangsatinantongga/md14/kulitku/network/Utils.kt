@@ -1,5 +1,6 @@
-package alangsatinantongga.md14.kulitku
+package alangsatinantongga.md14.kulitku.network
 
+import alangsatinantongga.md14.kulitku.R
 import android.app.Application
 import android.content.ContentResolver
 import android.content.Context

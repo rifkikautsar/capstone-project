@@ -1,5 +1,6 @@
-package alangsatinantongga.md14.kulitku
+package alangsatinantongga.md14.kulitku.fragment
 
+import alangsatinantongga.md14.kulitku.R
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater

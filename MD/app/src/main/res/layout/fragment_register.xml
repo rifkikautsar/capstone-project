@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".RegisterFragment">
+    tools:context=".fragment.RegisterFragment">
 
     <TextView
         android:id="@+id/textView3"
@@ -42,7 +42,7 @@
         android:layout_width="129dp"
         android:layout_height="56dp"
         android:layout_marginTop="72dp"
-        android:background="#4BABE1"
+        android:background="#3ADF3A"
         android:text="Register"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"

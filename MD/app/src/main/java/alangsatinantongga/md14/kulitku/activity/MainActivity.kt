@@ -1,9 +1,10 @@
-package alangsatinantongga.md14.kulitku
+package alangsatinantongga.md14.kulitku.activity
 
+import alangsatinantongga.md14.kulitku.fragment.HomeFragment
+import alangsatinantongga.md14.kulitku.R
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             val user = mAuth.currentUser
 
             if (user != null) {
-                val i = Intent(this@MainActivity, HomeBaseActivity::class.java)
+                val i = Intent(this@MainActivity, BottomNavigationActivity::class.java)
                 i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(i)
             }

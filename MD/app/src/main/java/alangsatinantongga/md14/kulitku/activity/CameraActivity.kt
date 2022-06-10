@@ -1,5 +1,6 @@
-package alangsatinantongga.md14.kulitku
+package alangsatinantongga.md14.kulitku.activity
 
+import alangsatinantongga.md14.kulitku.network.createFile
 import alangsatinantongga.md14.kulitku.databinding.ActivityCameraBinding
 import android.content.Intent
 import android.os.Build

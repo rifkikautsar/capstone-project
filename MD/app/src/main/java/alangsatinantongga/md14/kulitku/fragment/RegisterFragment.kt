@@ -1,6 +1,6 @@
-package alangsatinantongga.md14.kulitku
+package alangsatinantongga.md14.kulitku.fragment
 
-import android.content.Intent
+import alangsatinantongga.md14.kulitku.R
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
@@ -17,8 +17,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-
-class LoginFragment : Fragment(), View.OnClickListener {
+class RegisterFragment : Fragment(), View.OnClickListener{
     private lateinit var mAuth: FirebaseAuth
 
     override fun onCreateView(
@@ -26,62 +25,66 @@ class LoginFragment : Fragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        return inflater.inflate(R.layout.fragment_register, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mAuth = Firebase.auth
         val btnBack : ImageButton = view.findViewById(R.id.btnBack)
-        val btnLogin : Button = view.findViewById(R.id.btnLogin)
+        val btnRegister : Button = view.findViewById(R.id.btnRegister)
         btnBack.setOnClickListener(this)
-        btnLogin.setOnClickListener(this)
+        btnRegister.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
-        val email: EditText? = view?.findViewById(R.id.emailEditSignIn)
-        val pass : EditText? = view?.findViewById(R.id.passEditSignIn)
-        val mHomeBaseActivity = HomeBaseActivity()
+        val email : EditText? = view?.findViewById(R.id.emailEditRegister)
+        val pass : EditText? = view?.findViewById(R.id.passEditRegister)
+        val mLoginFragment = LoginFragment()
         val mFragmentManager = parentFragmentManager
 
         if (v.id == R.id.btnBack) {
             activity?.onBackPressed()
-        } else if (v.id == R.id.btnLogin) {
+        } else if (v.id == R.id.btnRegister) {
             val emails = email?.text.toString().trim()
             val password = pass?.text.toString().trim()
             if (TextUtils.isEmpty(emails) && TextUtils.isEmpty(password)) {
                 Toast.makeText(
-                    this@LoginFragment.requireActivity(),
+                    this@RegisterFragment.requireActivity(),
                     "Mohon Masukkan Email atau Password",
                     Toast.LENGTH_SHORT
                 ).show()
             }else if (TextUtils.isEmpty(emails)) {
                 Toast.makeText(
-                    this@LoginFragment.requireActivity(),
+                    this@RegisterFragment.requireActivity(),
                     "Mohon Isi Kolom Email",
                     Toast.LENGTH_SHORT
                 ).show()
             }else if (TextUtils.isEmpty(password)) {
                 Toast.makeText(
-                    this@LoginFragment.requireActivity(),
+                    this@RegisterFragment.requireActivity(),
                     "Mohon Isi Kolom Password",
                     Toast.LENGTH_SHORT
                 ).show()
-            }else {
-                mAuth.signInWithEmailAndPassword(emails, password)
+            } else {
+                mAuth.createUserWithEmailAndPassword(emails, password)
                     .addOnCompleteListener { task: Task<AuthResult?> ->
                         if (task.isSuccessful) {
-                            Toast.makeText(this@LoginFragment.requireActivity(), "Login Berhasil", Toast.LENGTH_SHORT)
+                            Toast.makeText(this@RegisterFragment.requireActivity(), "Registrasi Berhasil", Toast.LENGTH_SHORT)
                                 .show()
-                            val i = Intent(this@LoginFragment.requireActivity(), HomeBaseActivity::class.java)
-                            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                            startActivity(i)
+                            mAuth.signOut()
+                            mFragmentManager.beginTransaction().apply {
+                                replace(R.id.frame_container, mLoginFragment, LoginFragment::class.java.simpleName)
+                                mFragmentManager.popBackStack()
+                                commit()
+                            }
                         } else {
-                            Toast.makeText(this@LoginFragment.requireActivity(), "Login Gagal", Toast.LENGTH_SHORT)
+                            Toast.makeText(this@RegisterFragment.requireActivity(), "Registrasi Gagal", Toast.LENGTH_SHORT)
                                 .show()
                         }
                     }
             }
         }
     }
+
 }

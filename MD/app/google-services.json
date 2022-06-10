@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "403313037407",
+    "project_id": "kulitku-bangkit",
+    "storage_bucket": "kulitku-bangkit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:403313037407:android:5235356fd9126ce5e08bea",
+        "android_client_info": {
+          "package_name": "alangsatinantongga.md14.kulitku"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "403313037407-d7pndhd921vffvq26gp9d2blm9saa5nd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_yWnm2jNIJ8KMJ2tNmY8OPgkrU5T0CzY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "403313037407-d7pndhd921vffvq26gp9d2blm9saa5nd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

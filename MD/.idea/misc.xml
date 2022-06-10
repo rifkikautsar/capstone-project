@@ -3,17 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1" />
-        <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/drawable/ic_capture.xml" value="0.1" />
-        <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
-        <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/drawable/ic_switch_camera.xml" value="0.1" />
+        <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/drawable/bg_list.xml" value="0.1455" />
+        <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/font/inter_extralight.xml" value="0.234375" />
+        <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/font/inter_medium.xml" value="0.234375" />
         <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/layout/activity_add_photo.xml" value="0.25" />
-        <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/layout/activity_camera.xml" value="0.16576086956521738" />
-        <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/layout/activity_home_base.xml" value="0.25" />
-        <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/layout/activity_main.xml" value="0.16576086956521738" />
+        <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/layout/activity_bottom_nav.xml" value="0.17074275362318841" />
+        <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/layout/activity_bottom_navigation.xml" value="0.25" />
+        <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/layout/activity_home_base.xml" value="0.18" />
+        <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/layout/activity_main.xml" value="0.17074275362318841" />
+        <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/layout/fragment_about.xml" value="0.25" />
+        <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/layout/fragment_dashboard.xml" value="0.17074275362318841" />
         <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/layout/fragment_home.xml" value="0.25" />
-        <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/layout/fragment_login.xml" value="0.25" />
-        <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/layout/fragment_register.xml" value="0.25" />
+        <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/layout/fragment_home_base.xml" value="0.22" />
+        <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
+        <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/layout/fragment_register.xml" value="0.33" />
+        <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>

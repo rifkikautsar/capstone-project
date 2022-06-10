@@ -4,32 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddPhotoActivity">
+    tools:context=".activity.AddPhotoActivity">
 
     <ImageView
         android:id="@+id/prevImage"
         android:layout_width="410dp"
-        android:layout_height="493dp"
-        android:layout_marginTop="56dp"
-        android:background="@android:drawable/ic_menu_gallery"
+        android:layout_height="460dp"
+        android:layout_marginTop="60dp"
+        android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnCamera"
         android:layout_width="205dp"
         android:layout_height="55dp"
         android:layout_marginStart="104dp"
+        android:layout_marginBottom="140dp"
         android:background="#4BABE1"
         android:text="Camera"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnGallery"
         app:layout_constraintHorizontal_bias="0.954"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prevImage"
-        app:layout_constraintVertical_bias="0.196" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnGallery"
