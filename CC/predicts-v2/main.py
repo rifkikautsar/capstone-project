@@ -63,7 +63,8 @@ def handler(request):
             pred=model.predict(img)
             output_class = classnames[np.argmax(pred)]
             data = {
-                "class" : output_class,
+                "message" : "Prediction Success",
+                "class" : output_class
             }
             response = make_response(jsonify(data))
             response.headers['Content-Type'] = 'application/json'
@@ -71,10 +72,8 @@ def handler(request):
             return response
         else:
             data = {
-                "code" : 400,
-                "data" : {
-                    "message" : "KEY MUST BE ('image')"
-                }
+                "message" : "KEY MUST BE ('image')",
+                "class" : ""
             }
             response = make_response(jsonify(data))
             response.headers['Content-Type'] = 'application/json'
@@ -82,10 +81,8 @@ def handler(request):
             return response
     else:
         data = {
-            "code" : 400,
-            "data" : {
-                "message" : "REQUEST MUST BE POST!!!"
-            }
+            "message" : "REQUEST MUST BE POST!!!",
+            "class" : ""
         }
         response = make_response(jsonify(data))
         response.headers['Content-Type'] = 'application/json'
