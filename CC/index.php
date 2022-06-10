@@ -86,7 +86,6 @@ function uploadFile(ServerRequestInterface $request): ResponseInterface
                     'name' => $cloudPath
                 ]);
                 $object->update(['acl' => []], ['predefinedAcl' => 'PUBLICREAD']);
-
                 $fields = [
                     'image' => $name,
                 ];
