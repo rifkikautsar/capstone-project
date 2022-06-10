@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/drawable/bg_list.xml" value="0.1455" />
+        <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/drawable/navbar_color.xml" value="0.1455" />
+        <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/drawable/navbar_txt.xml" value="0.1455" />
         <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/font/inter_extralight.xml" value="0.234375" />
         <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/font/inter_medium.xml" value="0.234375" />
         <entry key="..\:/KulitKu/capstone-project/MD/app/src/main/res/layout/activity_add_photo.xml" value="0.25" />
