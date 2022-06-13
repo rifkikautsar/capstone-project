@@ -15,7 +15,7 @@ class Retrofit {
                 // .addInterceptor(RequestInterceptor(context))
                 .build()
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://uploads-gnkxwtwa6q-et.a.run.app/")
+                .baseUrl("https://uploads-v2-gnkxwtwa6q-uc.a.run.app/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()

@@ -21,6 +21,9 @@
         android:theme="@style/Theme.KulitKu"
         tools:targetApi="31">
         <activity
+            android:name=".activity.ScanResultActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.AddPhotoActivity"
             android:exported="false" />
         <activity

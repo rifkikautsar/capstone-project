@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/inter_bold"
-        android:text="KulitKu"
+        android:text="Kulitku"
         android:textColor="#6B000000"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -56,7 +56,8 @@
         android:id="@+id/btnAddPhoto"
         android:layout_width="120sp"
         android:layout_height="120sp"
-        android:background="#FFDF34"
+        android:background="@drawable/button_shape"
+        android:backgroundTint="#FFDF34"
         android:padding="20dp"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -95,10 +96,11 @@
         app:layout_constraintTop_toTopOf="@+id/textView7" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/btnScanResult"
         android:layout_width="120sp"
         android:layout_height="120sp"
-        android:background="#FF40E48C"
+        android:background="@drawable/button_shape"
+        android:backgroundTint="#40E48C"
         android:gravity="center_vertical"
         android:padding="20dp"
         android:scaleType="centerCrop"

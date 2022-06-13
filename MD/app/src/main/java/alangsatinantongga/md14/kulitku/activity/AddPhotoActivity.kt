@@ -1,22 +1,27 @@
 package alangsatinantongga.md14.kulitku.activity
 
-import alangsatinantongga.md14.kulitku.*
+import alangsatinantongga.md14.kulitku.R
+import alangsatinantongga.md14.kulitku.databinding.ActivityAddPhotoBinding
+import alangsatinantongga.md14.kulitku.db.DatabaseContract
+import alangsatinantongga.md14.kulitku.db.ScanHelper
+import alangsatinantongga.md14.kulitku.entity.Scan
 import alangsatinantongga.md14.kulitku.network.Retrofit
 import alangsatinantongga.md14.kulitku.network.UploadResponse
 import alangsatinantongga.md14.kulitku.network.rotateBitmap
 import alangsatinantongga.md14.kulitku.network.uriToFile
-import alangsatinantongga.md14.kulitku.databinding.ActivityAddPhotoBinding
 import android.Manifest
+import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.exifinterface.media.ExifInterface
@@ -30,19 +35,39 @@ import retrofit2.Response
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AddPhotoActivity : AppCompatActivity(), View.OnClickListener{
     private lateinit var binding: ActivityAddPhotoBinding
+    private var scan: Scan? = null
+    private var position: Int = 0
+    private lateinit var scanHelper: ScanHelper
+
     companion object {
         const val CAMERA_X_RESULT = 200
 
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
         private const val REQUEST_CODE_PERMISSIONS = 10
+
+        const val EXTRA_NOTE = "extra_note"
+        const val EXTRA_POSITION = "extra_position"
+        const val RESULT_ADD = 101
+        const val RESULT_UPDATE = 201
+        const val RESULT_DELETE = 301
+        const val ALERT_DIALOG_CLOSE = 10
+        const val ALERT_DIALOG_DELETE = 20
+
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddPhotoBinding.inflate(layoutInflater)
         val view = binding.root
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        // Remember that you should never show the action bar if the
+        // status bar is hidden, so hide that too if necessary.
+        actionBar?.hide()
         setContentView(view)
 
         if (!allPermissionsGranted()) {
@@ -56,10 +81,16 @@ class AddPhotoActivity : AppCompatActivity(), View.OnClickListener{
         val camera = binding.btnCamera
         val gallery = binding.btnGallery
         val send = binding.btnSend
+        val back = binding.btnBack
 
         camera.setOnClickListener(this)
         gallery.setOnClickListener(this)
         send.setOnClickListener(this)
+        back.setOnClickListener(this)
+
+        scanHelper = ScanHelper.getInstance(applicationContext)
+        scanHelper.open()
+
     }
 
     override fun onRequestPermissionsResult(
@@ -79,6 +110,7 @@ class AddPhotoActivity : AppCompatActivity(), View.OnClickListener{
             }
         }
     }
+
 
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
@@ -121,6 +153,12 @@ class AddPhotoActivity : AppCompatActivity(), View.OnClickListener{
         }
     }
 
+    private fun getCurrentDate(): String {
+        val dateFormat = SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.getDefault())
+        val date = Date()
+        return dateFormat.format(date)
+    }
+
     private fun uploadImage() {
         if (getFile != null) {
             val foto = reduceFileImage(getFile as File)
@@ -146,6 +184,11 @@ class AddPhotoActivity : AppCompatActivity(), View.OnClickListener{
                         if (responseBody != null) {
                             Toast.makeText(
                                 this@AddPhotoActivity,
+                                "Foto berhasil di Upload",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            Toast.makeText(
+                                this@AddPhotoActivity,
                                 responseBody.data.message,
                                 Toast.LENGTH_SHORT
                             ).show()
@@ -154,6 +197,29 @@ class AddPhotoActivity : AppCompatActivity(), View.OnClickListener{
                                 responseBody.data.result.jsonMemberClass,
                                 Toast.LENGTH_SHORT
                             ).show()
+
+                            val image = responseBody.data.url.trim()
+                            val date = getCurrentDate()
+                            val prediction = responseBody.data.result.jsonMemberClass.trim()
+
+                            scan?.image = image
+                            scan?.date = date
+                            scan?.predict = prediction
+
+                            val values = ContentValues()
+                                values.put(DatabaseContract.ScanColumns.IMAGE, image)
+                                values.put(DatabaseContract.ScanColumns.DATE, date)
+                                values.put(DatabaseContract.ScanColumns.PREDICTION, prediction)
+
+                            val result = scanHelper.insert(values)
+                            if (result > 0) {
+                                scan?.id = result.toInt()
+                                setResult(RESULT_ADD, intent)
+                                finish()
+                            } else {
+                                Toast.makeText(this@AddPhotoActivity, "Gagal menambah data", Toast.LENGTH_SHORT).show()
+                            }
+
                             val moveIntent = Intent(this@AddPhotoActivity, BottomNavigationActivity::class.java)
                             moveIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             startActivity(moveIntent)
@@ -171,7 +237,7 @@ class AddPhotoActivity : AppCompatActivity(), View.OnClickListener{
                 override fun onFailure(call: Call<UploadResponse>, t: Throwable) {
                     Toast.makeText(
                         this@AddPhotoActivity,
-                        "Gagal instance Retrofit",
+                        "Koneksi Tidak Stabil, Mohon Coba Lagi",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -229,11 +295,14 @@ class AddPhotoActivity : AppCompatActivity(), View.OnClickListener{
             }
             R.id.btnSend -> {
                 uploadImage()
-               Toast.makeText(
+                Toast.makeText(
                     this@AddPhotoActivity,
-                    "Foto berhasil di Upload",
+                    "Sedang Memproses...",
                     Toast.LENGTH_SHORT
                 ).show()
+            }
+            R.id.btnBack -> {
+                onBackPressed()
             }
         }
     }

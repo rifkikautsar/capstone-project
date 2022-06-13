@@ -6,39 +6,61 @@
     android:layout_height="match_parent"
     tools:context=".activity.AddPhotoActivity">
 
-    <ImageView
-        android:id="@+id/prevImage"
-        android:layout_width="410dp"
-        android:layout_height="460dp"
-        android:layout_marginTop="60dp"
-        android:scaleType="fitCenter"
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:background="#FFFFFF"
+        android:scrollbarSize="4dp"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.026" />
+
+    <ImageView
+        android:id="@+id/prevImage"
+        android:layout_width="369dp"
+        android:layout_height="417dp"
+        android:layout_marginTop="124dp"
+        android:background="@drawable/button_shape"
+        android:backgroundTint="#FFDFA5"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.38"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_gallery" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnCamera"
-        android:layout_width="205dp"
+        android:layout_width="155dp"
         android:layout_height="55dp"
-        android:layout_marginStart="104dp"
+        android:layout_marginStart="95dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="140dp"
-        android:background="#4BABE1"
+        android:background="@drawable/button_shape"
+        android:backgroundTint="#293942"
         android:text="Camera"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnGallery"
         app:layout_constraintHorizontal_bias="0.954"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/prevImage"
+        app:layout_constraintVertical_bias="0.4" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnGallery"
-        android:layout_width="205dp"
+        android:layout_width="155dp"
         android:layout_height="55dp"
         android:layout_marginStart="2dp"
         android:layout_marginEnd="104dp"
-        android:background="#4BABE1"
+        android:background="@drawable/button_shape"
+        android:backgroundTint="#293942"
         android:text="Gallery"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/btnCamera"
@@ -49,18 +71,16 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnSend"
-        android:layout_width="412dp"
+        android:layout_width="155dp"
         android:layout_height="54dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="32dp"
-        android:background="#4BABE1"
+        android:layout_marginBottom="52dp"
+        android:background="@drawable/button_shape"
+        android:backgroundTint="#293942"
         android:text="Send"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/prevImage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnGallery"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintHorizontal_bias="0.937"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

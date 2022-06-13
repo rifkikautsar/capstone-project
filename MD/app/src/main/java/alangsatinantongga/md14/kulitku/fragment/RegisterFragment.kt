@@ -40,6 +40,7 @@ class RegisterFragment : Fragment(), View.OnClickListener{
     override fun onClick(v: View) {
         val email : EditText? = view?.findViewById(R.id.emailEditRegister)
         val pass : EditText? = view?.findViewById(R.id.passEditRegister)
+        val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
         val mLoginFragment = LoginFragment()
         val mFragmentManager = parentFragmentManager
 
@@ -48,6 +49,19 @@ class RegisterFragment : Fragment(), View.OnClickListener{
         } else if (v.id == R.id.btnRegister) {
             val emails = email?.text.toString().trim()
             val password = pass?.text.toString().trim()
+            if (emails.matches(emailPattern.toRegex())) {
+                Toast.makeText(
+                    this@RegisterFragment.requireActivity(),
+                    "Email Valid",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                Toast.makeText(
+                    this@RegisterFragment.requireActivity(),
+                    "Email Tidak Valid",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
             if (TextUtils.isEmpty(emails) && TextUtils.isEmpty(password)) {
                 Toast.makeText(
                     this@RegisterFragment.requireActivity(),
@@ -79,7 +93,7 @@ class RegisterFragment : Fragment(), View.OnClickListener{
                                 commit()
                             }
                         } else {
-                            Toast.makeText(this@RegisterFragment.requireActivity(), "Registrasi Gagal", Toast.LENGTH_SHORT)
+                            Toast.makeText(this@RegisterFragment.requireActivity(), "Registrasi Gagal, Mohon Periksa Email & Password Kembali", Toast.LENGTH_SHORT)
                                 .show()
                         }
                     }

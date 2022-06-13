@@ -12,6 +12,7 @@
     <string name="telp"><u>No.Telp</u></string>
     <string name="date"><u>Tanggal/Bulan Lahir</u></string>
     <string name="faq"><u>Frequently Asked Question</u></string>
+    <string name="user">{"id" : "7"}</string>
 
     <string-array name="faq">
         <item>Cara mengakses foto yang telah discan?</item>
@@ -20,5 +21,27 @@
         <item>WIP</item>
         <item>WIP</item>
         <item>WIP</item>
+    </string-array>
+
+    <string-array name="Jerawat">
+        <item>Benzoil peroksida</item>
+        <item>Asam salisilat</item>
+        <item>Sulfur dan resorcinol</item>
+    </string-array>
+
+    <string-array name="Melasma">
+        <item>Hydroquinone</item>
+        <item>Tretinoin dan kortikosteroid</item>
+    </string-array>
+
+    <string-array name="Kutil">
+        <item>Cantharidin</item>
+        <item>Cryotherapy</item>
+        <item>Operation</item>
+    </string-array>
+
+    <string-array name="Milia">
+        <item>Cryotherapy</item>
+        <item>Retinol facial product</item>
     </string-array>
 </resources>

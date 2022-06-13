@@ -11,15 +11,6 @@ data class UploadResponse(
 	val data: Data
 )
 
-data class Data(
-
-	@field:SerializedName("result")
-	val result: Result,
-
-	@field:SerializedName("message")
-	val message: String
-)
-
 data class Result(
 
 	@field:SerializedName("message")
@@ -27,4 +18,19 @@ data class Result(
 
 	@field:SerializedName("class")
 	val jsonMemberClass: String
+)
+
+data class Data(
+
+	@field:SerializedName("result")
+	val result: Result,
+
+	@field:SerializedName("url_article")
+	val urlArticle: String,
+
+	@field:SerializedName("message")
+	val message: String,
+
+	@field:SerializedName("url")
+	val url: String
 )

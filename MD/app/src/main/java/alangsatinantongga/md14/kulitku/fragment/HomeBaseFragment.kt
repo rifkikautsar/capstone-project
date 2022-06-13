@@ -2,6 +2,7 @@ package alangsatinantongga.md14.kulitku.fragment
 
 import alangsatinantongga.md14.kulitku.activity.AddPhotoActivity
 import alangsatinantongga.md14.kulitku.R
+import alangsatinantongga.md14.kulitku.activity.ScanResultActivity
 import alangsatinantongga.md14.kulitku.databinding.FragmentHomeBaseBinding
 import android.content.Intent
 import android.os.Bundle
@@ -32,7 +33,9 @@ class HomeBaseFragment : Fragment(),View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         mAuth = Firebase.auth
         val addPhoto : ImageButton = binding.btnAddPhoto
+        val scanResult : ImageButton = binding.btnScanResult
         addPhoto.setOnClickListener(this)
+        scanResult.setOnClickListener(this)
 
     }
 
@@ -40,6 +43,10 @@ class HomeBaseFragment : Fragment(),View.OnClickListener {
         when (v?.id) {
             R.id.btnAddPhoto -> {
                 val intent = Intent(this.requireActivity(), AddPhotoActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.btnScanResult -> {
+                val intent = Intent(this.requireActivity(), ScanResultActivity::class.java)
                 startActivity(intent)
             }
         }
