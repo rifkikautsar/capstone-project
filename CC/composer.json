@@ -11,7 +11,7 @@
   "scripts": {
     "start": [
       "Composer\\Config::disableProcessTimeout",
-      "php -S localhost:8080 vendor/google/cloud-functions-framework/router.php"
+      "php -S localhost:5000 vendor/google/cloud-functions-framework/router.php"
     ]
   }
 }
