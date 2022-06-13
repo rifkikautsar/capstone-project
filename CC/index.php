@@ -76,7 +76,8 @@ function uploadFile(ServerRequestInterface $request): ResponseInterface
                 ]);
                 // var_dump($str);die;
                 // $storage = new StorageClient([
-                //     'keyFilePath' => 'bustling-bot-350614-c80cc103165a.json'
+                //     'projectId' => 'bustling-bot-350614',
+                //     'keyFile' => json_decode(file_get_contents('bustling-bot-350614-c80cc103165a.json'), true)
                 // ]);
                 $bucketName = 'kulitku-capstone';
                 $cloudPath = 'images/' . $name;
@@ -84,8 +85,24 @@ function uploadFile(ServerRequestInterface $request): ResponseInterface
                 $object = $bucket->upload($data, [
                     'name' => $cloudPath
                 ]);
+                $object->update(['acl' => []], ['predefinedAcl' => 'PUBLICREAD']);
+                $fields = [
+                    'image' => $name,
+                ];
+                $payload = json_encode($fields);
+                $ch = curl_init();
+                // curl_setopt($ch,CURLOPT_URL, 'http://192.168.0.113:8080/');
+                curl_setopt($ch,CURLOPT_URL, 'https://predicts-gnkxwtwa6q-et.a.run.app');
+                curl_setopt($ch,CURLOPT_POST, true);
+                curl_setopt($ch,CURLOPT_POSTFIELDS, $payload);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+                curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+                $result = curl_exec($ch);
+                curl_close($ch);
                 $response['code'] = 200;
-                $response['data']['message'] = 'Image '. $name . ' Success upload to Cloud Storage Bucket';
+                $response['data']['message'] = 'Image '. $name . ' Success upload to Cloud Storage Bucket.';
+                $response['data']['url'] = 'https://storage.googleapis.com/'. $bucketName .'/images'.'/'. $name;
+                $response['data']['result'] = json_decode($result);
                 return new Response(200, [], json_encode($response));
             } catch(Exception $e) {
                 $response['code'] = 404;
