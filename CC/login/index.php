@@ -30,7 +30,6 @@ function login(ServerRequestInterface $request): ResponseInterface
             $response['data']['message'] = 'Method Not Allowed: expected POST, found ' . $request->getMethod();
             return new Response(405, [], json_encode($response));
         }
-
         $contentType = $request->getHeader('Content-Type')[0];
         if (strpos($contentType, 'application/json') !== 0) {
             $response['code'] = 400;
@@ -39,10 +38,10 @@ function login(ServerRequestInterface $request): ResponseInterface
         }
         try{
             $username = 'root';
-            $password = "NJHMT}Jc'P&JhirT";
-            $dbName = 'capstone';
-            $connectionName = "bustling-bot-350614:asia-southeast2:db-capstone";
-            $dbHost = '34.128.115.93';
+            $password = "K,=QZF]H`e[3jz~X";
+            $dbName = 'incubation';
+            $connectionName = "bustling-bot-350614:us-central1:db-incubation";
+            $dbHost = '35.226.57.173';
             
             $conn = new PDO("mysql:host=".$dbHost.";dbname=".$dbName, $username, $password);
             $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
@@ -54,11 +53,14 @@ function login(ServerRequestInterface $request): ResponseInterface
             $stmt->execute();
             $data = $stmt->fetch(PDO::FETCH_ASSOC);
             if ($stmt->rowCount() > 0) {
-                $array['id'] = $data['id'];
-                $array['nama_user'] = $data['nama_user'];
-                $array['username'] = $data['username'];
+                $array['userId'] = $data['userId'];
+                $array['nama'] = $data['nama'];
                 $array['email'] = $data['email'];
-                if (password_verify($obj->password,$data['password'])) {
+                $array['jenisKelamin'] = $data['jenisKelamin'];
+                $array['jenisKulit'] = $data['jenisKulit'];
+                $array['tanggalLahir'] = $data['tanggalLahir'];
+                $array['apiKey'] = $data['apiKey'];
+                if (password_verify($obj->pass,$data['pass'])) {
                         $response['code'] = 200;
                         $response['data']['message'] = "Login Success";
                         $response['data']['user'] = $array;
@@ -66,12 +68,12 @@ function login(ServerRequestInterface $request): ResponseInterface
                     } 
                     else {
                         $response['code'] = 400;
-                        $response['data']['message'] = "Wrong Password";
+                        $response['data']['message'] = "Password Salah. Silakan ulangi";
                         return new Response(400, [], json_encode($response));
                     }
             } else {
                 $response['code'] = 400;
-                $response['data']['message'] = "Check Password or Email!";
+                $response['data']['message'] = "Email atau Password Salah. Silakan ulangi";
                 return new Response(400, [], json_encode($response));
             }
 

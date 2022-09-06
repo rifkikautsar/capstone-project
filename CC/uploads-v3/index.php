@@ -69,41 +69,72 @@ function uploadFile(ServerRequestInterface $request): ResponseInterface
                 return new Response(400, [], json_encode($response));
             }
             try {
-                $data = file_get_contents($tmpFile);
-                $storage = new StorageClient([
-                    'projectId' => 'bustling-bot-350614',
-                    'keyFile' => json_decode(file_get_contents('bustling-bot-350614-5dab7679f2d4.json'), true)
-                ]);
-                // var_dump($str);die;
-                // $storage = new StorageClient([
-                //     'projectId' => 'bustling-bot-350614',
-                //     'keyFile' => json_decode(file_get_contents('bustling-bot-350614-c80cc103165a.json'), true)
-                // ]);
-                $bucketName = 'kulitku-capstone';
-                $cloudPath = 'images/' . $name;
-                $bucket = $storage->bucket($bucketName);
-                $object = $bucket->upload($data, [
-                    'name' => $cloudPath
-                ]);
-                $object->update(['acl' => []], ['predefinedAcl' => 'PUBLICREAD']);
-                $fields = [
-                    'image' => $name,
-                ];
-                $payload = json_encode($fields);
-                $ch = curl_init();
-                // curl_setopt($ch,CURLOPT_URL, 'http://192.168.0.113:8080/');
-                // curl_setopt($ch,CURLOPT_URL, 'https://predicts-gnkxwtwa6q-et.a.run.app');
-                // curl_setopt($ch,CURLOPT_POST, true);
-                // curl_setopt($ch,CURLOPT_POSTFIELDS, $payload);
-                // curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-                // curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
-                // $result = curl_exec($ch);
-                // curl_close($ch);
-                $response['code'] = 200;
-                $response['data']['message'] = 'Image '. $name . ' Success upload to Cloud Storage Bucket.';
-                $response['data']['url'] = 'https://storage.googleapis.com/'. $bucketName .'/images'.'/'. $name;
-                $response['data']['result'] = json_decode($result);
-                return new Response(200, [], json_encode($response));
+            if ($request->getParsedBody()['class'] == null){
+                $response['code'] = 400;
+                $response['data']['message'] = 'Bad Request: Tidak ada kelas';
+                return new Response(400, [], json_encode($response));
+                die;
+            }
+            if ($request->getParsedBody()['apiKey'] == null){
+                $response['code'] = 400;
+                $response['data']['message'] = 'Bad Request: Tidak ada apiKey';
+                return new Response(400, [], json_encode($response));
+                die;
+            }
+            if ($request->getParsedBody()['userId'] == null){
+                $response['code'] = 400;
+                $response['data']['message'] = 'Bad Request: Tidak ada userId';
+                return new Response(400, [], json_encode($response));
+                die;
+            }
+                // $username = getenv('MYSQL_USER');
+                // $password = getenv('MYSQL_PASSWORD');
+                // $dbName = getenv('MYSQL_DATABASE');
+                // $dbHost = getenv('MYSQL_HOST');
+                $username = 'root';
+                $password = "K,=QZF]H`e[3jz~X";
+                $dbName = 'incubation';
+                $connectionName = "bustling-bot-350614:us-central1:db-incubation";
+                $dbHost = '35.226.57.173';
+                $conn = new PDO("mysql:host=".$dbHost.";dbname=".$dbName, $username, $password);
+                $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+                $userId = $request->getParsedBody()['userId'];
+                $apiKey = $request->getParsedBody()['apiKey'];
+                $class = $request->getParsedBody()['class'];
+                $stmt = $conn->prepare("SELECT apiKey FROM user where userId = :userId");
+                $stmt->bindParam(":userId",$userId);
+                $stmt->execute();
+                $data = $stmt->fetch(PDO::FETCH_ASSOC);
+                if($stmt->rowCount() > 0){
+                    if ($apiKey === $data['apiKey']){
+                        $data = file_get_contents($tmpFile);
+                        $storage = new StorageClient([
+                            'projectId' => 'bustling-bot-350614',
+                            'keyFile' => json_decode(file_get_contents('gcs-upload-auth.json'), true)
+                        ]);
+                        $bucketName = 'kulitku-incubation';
+                        $cloudPath = $class. '/' . $name;
+                        $bucket = $storage->bucket($bucketName);
+                        $object = $bucket->upload($data, [
+                            'name' => $cloudPath
+                        ]);
+                        $fields = [
+                            'image' => $name,
+                        ];
+                        // $payload = json_encode($fields);
+                        $response['code'] = 200;
+                        $response['data']['message'] = 'Foto berhasil diupload';
+                        return new Response(200, [], json_encode($response));
+                    } else {
+                        $response['code'] = 403;
+                        $response['data']['message'] = 'Akses anda dilarang. API Key tidak sesuai';
+                        return new Response(403, [], json_encode($response));
+                    }
+                } else {
+                    $response['code'] = 400;
+                    $response['data']['message'] = 'Akun tidak terdaftar di data';
+                    return new Response(400, [], json_encode($response));
+                }
             } catch(Exception $e) {
                 $response['code'] = 404;
                 $response['data']['message'] = json_decode($e->getMessage());

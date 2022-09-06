@@ -39,10 +39,10 @@ function register(ServerRequestInterface $request): ResponseInterface
         }
         try{
             $username = 'root';
-            $password = "NJHMT}Jc'P&JhirT";
-            $dbName = 'capstone';
-            $connectionName = "bustling-bot-350614:asia-southeast2:db-capstone";
-            $dbHost = '34.128.115.93';
+            $password = "K,=QZF]H`e[3jz~X";
+            $dbName = 'incubation';
+            $connectionName = "bustling-bot-350614:us-central1:db-incubation";
+            $dbHost = '35.226.57.173';
             
             $conn = new PDO("mysql:host=".$dbHost.";dbname=".$dbName, $username, $password);
             $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
@@ -55,18 +55,17 @@ function register(ServerRequestInterface $request): ResponseInterface
                 $response['data']['message'] = "Email already registered! Please Login";
                 return new Response(400, [], json_encode($response));
             } else {
-                $hashPasswd = password_hash($obj->password, PASSWORD_DEFAULT);
-                $stmt = $conn->prepare("INSERT INTO user(nama_user,username,email,`password`) values(:nama_user, :username, :email, :password)");
-                $stmt->bindParam(":nama_user", $obj->nama);
-                $stmt->bindParam(":username", $obj->username);
+                $hashPasswd = password_hash($obj->pass, PASSWORD_DEFAULT);
+                $apiKey = implode('', str_split(substr(hash('sha256',microtime().rand(1000, 9999)), 0, 45), 6));
+                $stmt = $conn->prepare("INSERT INTO user(nama,email,jenisKelamin,jenisKulit,tanggalLahir,pass,apiKey) values(:nama,:email,:jenisKelamin,:jenisKulit,:tanggalLahir,:pass,:apiKey)");
+                $stmt->bindParam(":nama", $obj->nama);
                 $stmt->bindParam(":email", $obj->email);
-                $stmt->bindParam(":password", $hashPasswd);
+                $stmt->bindParam(":jenisKelamin", $obj->jenisKelamin);
+                $stmt->bindParam(":jenisKulit", $obj->jenisKulit);
+                $stmt->bindParam(":tanggalLahir", $obj->tanggalLahir);
+                $stmt->bindParam(":pass", $hashPasswd);
+                $stmt->bindParam(":apiKey", $apiKey);
                 $stmt->execute();
-                // $result = $conn->query('SELECT * FROM penyakit');
-                // // tampilkan data
-                // while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                //     $data[] = $row;
-                // }
                 $response['code'] = 200;
                 $response['data']['message'] = "Registration Success. Please Login.";
                 return new Response(200, [], json_encode($response));
