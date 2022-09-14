@@ -31,23 +31,40 @@ class HomeBaseFragment : Fragment(),View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.moveKubaca.setOnClickListener(this)
+        binding.moveKulitku.setOnClickListener(this)
         mAuth = Firebase.auth
-        val addPhoto : ImageButton = binding.btnAddPhoto
-        val scanResult : ImageButton = binding.btnScanResult
-        addPhoto.setOnClickListener(this)
-        scanResult.setOnClickListener(this)
 
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.btnAddPhoto -> {
-                val intent = Intent(this.requireActivity(), AddPhotoActivity::class.java)
-                startActivity(intent)
+            R.id.move_kubaca -> {
+                val mKubuku = KubukuFragment()
+                val mFragmentManager = parentFragmentManager
+                mFragmentManager.beginTransaction().apply {
+                    replace(
+                        R.id.nav_host_fragment_activity_bottom_nav,
+                        mKubuku,
+                        KubukuFragment::class.java.simpleName
+                    )
+                    addToBackStack(null)
+                    commit()
+                }
             }
-            R.id.btnScanResult -> {
-                val intent = Intent(this.requireActivity(), ScanResultActivity::class.java)
-                startActivity(intent)
+            R.id.move_kulitku -> {
+                val mKulitku = KulitkuFragment()
+                val mFragmentManager = parentFragmentManager
+                mFragmentManager.beginTransaction().apply {
+                    replace(
+                        R.id.nav_host_fragment_activity_bottom_nav,
+                        mKulitku,
+                        KulitkuFragment::class.java.simpleName
+                    )
+                    addToBackStack(null)
+                    commit()
+                }
             }
         }
     }

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDF6F0"
+    tools:context=".fragment.ScanFragment">
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:background="#00FFFFFF"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:scrollbarSize="4dp"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.044" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSend"
+        android:layout_width="100dp"
+        android:layout_height="54dp"
+        android:background="@drawable/button_shape"
+        android:backgroundTint="#B3CE73"
+        android:text="Kirim"
+        android:textColor="#293942"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/ImagePrev"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.797"
+        app:layout_constraintStart_toEndOf="@+id/btnBack"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/openGallery"
+        android:layout_width="409dp"
+        android:layout_height="155dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ImagePrev"
+        app:srcCompat="@drawable/camera_bg" />
+
+    <ImageView
+        android:id="@+id/ImagePrev"
+        android:layout_width="371dp"
+        android:layout_height="506dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#B3CE73"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.377"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.253"
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+    <ImageView
+        android:id="@+id/gallerry_access"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="44dp"
+        app:layout_constraintBottom_toBottomOf="@+id/openGallery"
+        app:layout_constraintEnd_toStartOf="@+id/camera_access"
+        app:layout_constraintTop_toBottomOf="@+id/ImagePrev"
+        app:layout_constraintVertical_bias="0.456"
+        app:srcCompat="@drawable/gallery" />
+
+    <ImageView
+        android:id="@+id/camera_access"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="104dp"
+        app:layout_constraintBottom_toBottomOf="@+id/openGallery"
+        app:layout_constraintEnd_toEndOf="@+id/openGallery"
+        app:layout_constraintTop_toBottomOf="@+id/ImagePrev"
+        app:layout_constraintVertical_bias="0.442"
+        app:srcCompat="@drawable/cameraaccess" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

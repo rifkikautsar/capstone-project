@@ -1,10 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FDF6F0"
     tools:context=".fragment.LoginFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/circle_lowerlogin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLogin"
+        android:layout_width="296dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="72dp"
+        android:background="@drawable/button_shape"
+        android:backgroundTint="#B3CE73"
+        android:text="Masuk"
+        android:textColor="#293942"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passEditSignIn" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="412dp"
+        android:layout_height="223dp"
+        android:src="@drawable/circle_upperlogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView3"
@@ -13,7 +50,7 @@
         android:layout_marginTop="132dp"
         android:fontFamily="@font/inter_bold"
         android:text="Login"
-        android:textColor="#4BABE1"
+        android:textColor="#293942"
         android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,19 +73,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnLogin"
-        android:layout_width="129dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="72dp"
-        android:background="@drawable/button_shape"
-        android:backgroundTint="#4BABE1"
-        android:text="Login"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passEditSignIn" />
 
     <EditText
         android:id="@+id/passEditSignIn"
@@ -88,7 +112,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:background="#FFFFFF"
+        android:background="#00FFFFFF"
         android:scrollbarSize="4dp"
         android:src="@drawable/ic_baseline_arrow_back_24"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -98,4 +122,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.022" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/curtain_error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foreground="#A6000000">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

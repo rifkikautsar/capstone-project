@@ -1,12 +1,14 @@
 <resources>
     <string name="app_name">KulitKu</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">Work In Progress</string>
     <string name="title_activity_bottom_nav">BottomNavActivity</string>
     <string name="title_home">Home</string>
-    <string name="title_about">About Us</string>
-    <string name="title_profile">Profile</string>
+    <string name="title_kubuku">KuBuKu</string>
+    <string name="title_profile">Profil</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_scanku">Scan</string>
+    <string name="title_kulitku">KulitKu</string>
     <string name="username"><u>Username</u></string>
     <string name="email"><u>Email</u></string>
     <string name="telp"><u>No.Telp</u></string>

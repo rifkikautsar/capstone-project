@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.KulitKu" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Theme.KulitKu" parent="Theme.Material3.Light">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#FFFFFF</item>
         <item name="colorPrimaryVariant">#56C2FF</item>
@@ -12,8 +12,11 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >@color/white</item>
         <!-- Customize your theme here. -->
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
         <item name="titleTextColor">@color/black</item>
     </style>
+
+    <style name="Theme.RoundedAppbar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.RoundedAppbar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

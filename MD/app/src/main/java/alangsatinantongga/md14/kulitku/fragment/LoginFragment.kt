@@ -9,10 +9,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.Toast
+import android.view.WindowManager
+import android.widget.*
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -39,6 +38,10 @@ class LoginFragment : Fragment(), View.OnClickListener {
         val btnLogin : Button = view.findViewById(R.id.btnLogin)
         btnBack.setOnClickListener(this)
         btnLogin.setOnClickListener(this)
+
+        val veil : ConstraintLayout = view.findViewById(R.id.curtain_error)
+        veil.visibility = View.INVISIBLE
+
     }
 
     override fun onClick(v: View) {
@@ -99,4 +102,5 @@ class LoginFragment : Fragment(), View.OnClickListener {
             }
         }
     }
+
 }

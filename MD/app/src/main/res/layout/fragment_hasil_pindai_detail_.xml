@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.HasilPindaiDetailFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="597dp"
+        android:layout_gravity="bottom|end"
+        android:background="#FDF6F0">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/kembali"
+            android:layout_width="323dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="232dp"
+            android:background="@drawable/button_shape"
+            android:backgroundTint="#FCEF7E"
+            android:text="Kembali"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/drugListDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="340dp"
+            android:text="obat"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textView24"
+            app:layout_constraintHorizontal_bias="0.072"
+            app:layout_constraintStart_toStartOf="@+id/textView24"
+            app:layout_constraintTop_toBottomOf="@+id/textView24"
+            app:layout_constraintVertical_bias="0.842" />
+
+        <TextView
+            android:id="@+id/scanPredictDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="408dp"
+            android:text="prediksi"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView23"
+            app:layout_constraintTop_toTopOf="@+id/textView23"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Saran Kulitku"
+            android:textColor="#293942"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:src="@drawable/care"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.079"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="- Kulit kamu terindikasi penyakit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.206"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="- Obat - obatan yang disarankan adalah :"
+            app:layout_constraintEnd_toEndOf="@+id/scanPredictDetail"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView23"
+            app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

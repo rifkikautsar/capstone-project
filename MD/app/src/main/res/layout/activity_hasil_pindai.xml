@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frame_hasil_scan"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDF6F0"
+    tools:context=".activity.HasilPindaiActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:background="#00FFFFFF"
+            android:scrollbarSize="4dp"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.044" />
+
+        <ImageView
+            android:id="@+id/hasil_Image"
+            android:layout_width="371dp"
+            android:layout_height="506dp"
+            android:backgroundTint="#B3CE73"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            app:layout_constraintVertical_bias="0.124"
+            app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="92dp"
+            android:text="Hasil Pindai"
+            android:textSize="32sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/hasilPrediksi"
+            android:layout_width="323dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="51dp"
+            android:background="@drawable/button_shape"
+            android:backgroundTint="#B3CE73"
+            android:text="Hasil Scan Kulitmu"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hasil_Image"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_dim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foreground="#A6000000">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

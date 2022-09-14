@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/purple_200">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vpIntroSlider"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <alangsatinantongga.md14.kulitku.activity.IndicatorLayout
+        android:id="@+id/indicatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="700dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:indicatorCount="4"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="30dp" />
+
+    <TextView
+        android:id="@+id/tvSkip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="121dp"
+        android:background="?selectableItemBackground"
+        android:clickable="true"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:text="Skip"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvNext"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/indicatorLayout" />
+
+    <ImageView
+        android:id="@+id/tvNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/indicatorLayout"
+        app:srcCompat="@drawable/next_green" />
+</androidx.constraintlayout.widget.ConstraintLayout>

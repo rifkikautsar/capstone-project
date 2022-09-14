@@ -33,6 +33,8 @@ class MainActivity : AppCompatActivity() {
                 startActivity(i)
             }
         }
+
+        supportActionBar?.hide()
     }
 
 }

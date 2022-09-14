@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDF6F0"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="30dp">
+
+    <ImageView
+        android:layout_width="247dp"
+        android:layout_height="282dp"
+        android:src="@drawable/acne_girl" />
+
+    <TextView
+        android:layout_width="221dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Scan Kulitmu Dengan Kulitku"
+        android:textColor="#293942"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+</LinearLayout>

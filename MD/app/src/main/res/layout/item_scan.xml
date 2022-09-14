@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scan_view"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_width="350dp"
+    android:layout_height="700dp"
     android:layout_gravity="center"
     android:layout_marginLeft="8dp"
     android:layout_marginTop="4dp"
@@ -14,15 +14,16 @@
     app:cardCornerRadius="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="395dp"
-        android:layout_height="497dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center">
 
         <ImageView
             android:id="@+id/img_item_photo"
-            android:layout_width="291dp"
-            android:layout_height="304dp"
+            android:layout_width="350dp"
+            android:layout_height="500dp"
             app:layout_constraintBottom_toTopOf="@+id/scanDate"
+            app:layout_constraintDimensionRatio="350:500"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -33,7 +34,7 @@
             android:id="@+id/scanDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="16dp"
             android:text="Tanggal :"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -46,7 +47,7 @@
             android:id="@+id/scanResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="68dp"
+            android:layout_marginStart="16dp"
             android:text="Hasil :"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -97,7 +98,7 @@
 
         <TextView
             android:id="@+id/drugList"
-            android:layout_width="360dp"
+            android:layout_width="318dp"
             android:layout_height="78dp"
             android:layout_marginBottom="4dp"
             android:text="obat"

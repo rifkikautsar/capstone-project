@@ -1,6 +1,5 @@
 package alangsatinantongga.md14.kulitku.network
 
-import com.google.gson.Gson
 import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.Multipart

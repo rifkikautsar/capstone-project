@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.KulitKu" parent="Theme.Material3.Light">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#FFFFFF</item>
+        <item name="colorPrimaryVariant">#56C2FF</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/white</item>
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="titleTextColor">@color/black</item>
+    </style>
+
+    <style name="Theme.RoundedAppbar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.RoundedAppbar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

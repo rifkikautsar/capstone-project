@@ -66,13 +66,4 @@ class ScanResultActivity : AppCompatActivity() {
         }
     }
 
-    private  fun setDrugs () {
-        val drug: TextView = findViewById<TextView>(R.id.drugList)
-        drug.text = getString(R.string.user)
-        val predict: TextView = findViewById(R.id.scanPredict)
-
-        // val res = resources
-        // if (predict.text == "Melasma") {
-        //    drug.text = res.getStringArray(R.array.Melasma).toString()
-    }
 }
