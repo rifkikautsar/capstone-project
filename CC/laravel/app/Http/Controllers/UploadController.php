@@ -90,10 +90,10 @@ class UploadController extends Controller
                         return new Response(400, $headers, json_encode($response));
                         die;
                     }
-                    $username = getenv('MYSQL_USER');
-                    $password = getenv('MYSQL_PASSWORD');
-                    $dbName = getenv('MYSQL_DATABASE');
-                    $dbHost = getenv('MYSQL_HOST');
+                    $username = getenv('DB_USERNAME');
+                    $password = getenv('DB_PASSWORD');
+                    $dbName = getenv('DB_DATABASE');
+                    $dbHost = getenv('DB_HOST');
                     $conn = new PDO("mysql:host=".$dbHost.";dbname=".$dbName, $username, $password);
                     $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
                 } catch(PDOException $e) {
