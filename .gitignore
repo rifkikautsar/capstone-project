@@ -8,4 +8,9 @@ CC/predicts-v2/venv
 CC/predicts-v2/__pycache__
 CC/predicts-v2/main2.py
 CC/predicts
+CC/sql-admin.json
+CC/gcs-upload-auth.json
+CC/bustling-bot-350614-5dab7679f2d4.json
+CC/uploads-v3/vendor/
+CC/uploads-v3/gcs-upload-auth.json
 
