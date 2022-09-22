@@ -38,18 +38,10 @@ class LoginController extends Controller
                 return new Response(400, $headers, json_encode($response));
             }
             try{
-                // $username = 'root';
-                // $password = "K,=QZF]H`e[3jz~X";
-                // $dbName = 'incubation';
-                // $dbHost = '35.226.57.173';
-                $username = 'root';
-                $password = "artemis47";
-                $dbName = 'incubation';
-                $dbHost = 'localhost';
-                // $username = getenv('MYSQL_USER');
-                // $password = getenv('MYSQL_PASSWORD');
-                // $dbName = getenv('MYSQL_DATABASE');
-                // $dbHost = getenv('MYSQL_HOST');
+                $username = getenv('MYSQL_USER');
+                $password = getenv('MYSQL_PASSWORD');
+                $dbName = getenv('MYSQL_DATABASE');
+                $dbHost = getenv('MYSQL_HOST');
                 $conn = new PDO("mysql:host=".$dbHost.";dbname=".$dbName, $username, $password);
                 $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
             } catch (PDOException $e) {
