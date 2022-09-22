@@ -40,19 +40,26 @@ function login(ServerRequestInterface $request): ResponseInterface
             $username = 'root';
             $password = "K,=QZF]H`e[3jz~X";
             $dbName = 'incubation';
-            $connectionName = "bustling-bot-350614:us-central1:db-incubation";
             $dbHost = '35.226.57.173';
             
+            // $username = getenv('MYSQL_USER');
+            // $password = getenv('MYSQL_PASSWORD');
+            // $dbName = getenv('MYSQL_DATABASE');
+            // $dbHost = getenv('MYSQL_HOST');
             $conn = new PDO("mysql:host=".$dbHost.";dbname=".$dbName, $username, $password);
             $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-            $obj = json_decode($request->getBody()->getContents());
-            // $hashPasswd = password_hash($obj->password, PASSWORD_DEFAULT);
-            $stmt = $conn->prepare("SELECT * FROM user WHERE email = :email");
-            $stmt->bindParam(":email", $obj->email);
-
-            $stmt->execute();
-            $data = $stmt->fetch(PDO::FETCH_ASSOC);
-            if ($stmt->rowCount() > 0) {
+        } catch (PDOException $e) {
+            // tampilkan pesan kesalahan jika koneksi gagal
+            return new Response(200, [], json_encode($e->getMessage()));
+            exit();
+        }
+        $obj = json_decode($request->getBody()->getContents());
+        $stmt = $conn->prepare("SELECT * FROM user WHERE email = :email");
+        $stmt->bindParam(":email", $obj->email);
+        $stmt->execute();
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($stmt->rowCount() > 0) {
+            if (password_verify($obj->pass,$data['pass'])) {
                 $array['userId'] = $data['userId'];
                 $array['nama'] = $data['nama'];
                 $array['email'] = $data['email'];
@@ -60,26 +67,21 @@ function login(ServerRequestInterface $request): ResponseInterface
                 $array['jenisKulit'] = $data['jenisKulit'];
                 $array['tanggalLahir'] = $data['tanggalLahir'];
                 $array['apiKey'] = $data['apiKey'];
-                if (password_verify($obj->pass,$data['pass'])) {
-                        $response['code'] = 200;
-                        $response['data']['message'] = "Login Success";
-                        $response['data']['user'] = $array;
-                        return new Response(200, [], json_encode($response));
-                    } 
-                    else {
-                        $response['code'] = 400;
-                        $response['data']['message'] = "Password Salah. Silakan ulangi";
-                        return new Response(400, [], json_encode($response));
-                    }
-            } else {
-                $response['code'] = 400;
-                $response['data']['message'] = "Email atau Password Salah. Silakan ulangi";
-                return new Response(400, [], json_encode($response));
-            }
-
-        } catch (PDOException $e) {
-            // tampilkan pesan kesalahan jika koneksi gagal
-            return new Response(200, [], json_encode($e->getMessage()));
+                
+                $response['code'] = 200;
+                $response['data']['message'] = "Login Success";
+                $response['data']['user'] = $array;
+                return new Response(200, [], json_encode($response));
+                } 
+                else {
+                    $response['code'] = 400;
+                    $response['data']['message'] = "Password Salah. Silakan ulangi";
+                    return new Response(400, [], json_encode($response));
+                }
+        } else {
+            $response['code'] = 400;
+            $response['data']['message'] = "Email atau Password Salah. Silakan ulangi";
+            return new Response(400, [], json_encode($response));
         }
     }
 }

@@ -43,7 +43,8 @@ def handler(request):
         if not model:
             download_model_file()
             # model = tf.keras.models.load_model(open("/tmp/model-v3.h5", 'rb'))
-            model = load_model("/workspace/model-v3.h5")
+            # model = load_model("/workspace/model-v3.h5") //untuk cloud functions
+            model = load_model("model-v3.h5")
             model.compile(loss='categorical_crossentropy',
                 optimizer='adam',
                 metrics=['accuracy'])
