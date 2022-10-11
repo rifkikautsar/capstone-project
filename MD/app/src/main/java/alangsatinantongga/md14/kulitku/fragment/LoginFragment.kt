@@ -39,8 +39,8 @@ class LoginFragment : Fragment(), View.OnClickListener {
         btnBack.setOnClickListener(this)
         btnLogin.setOnClickListener(this)
 
-        val veil : ConstraintLayout = view.findViewById(R.id.curtain_error)
-        veil.visibility = View.INVISIBLE
+//        val veil : ConstraintLayout = view.findViewById(R.id.curtain_error)
+//        veil.visibility = View.INVISIBLE
 
     }
 

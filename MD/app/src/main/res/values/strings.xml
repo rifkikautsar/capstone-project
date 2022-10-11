@@ -15,6 +15,33 @@
     <string name="date"><u>Tanggal/Bulan Lahir</u></string>
     <string name="faq"><u>Frequently Asked Question</u></string>
     <string name="user">{"id" : "7"}</string>
+    <string name="halo">Halo!</string>
+    <string name="desc_home">Mulai gunakan SkinPals agar kami dapat memberikan solusi khusus untuk kulitmu!</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="enter_email">Masukkan email</string>
+    <string name="asterisk">*</string>
+    <string name="password">Password</string>
+    <string name="enter_password">Masukkan password</string>
+    <string name="masuk">Masuk</string>
+    <string name="forgot_password">Lupa password?</string>
+    <string name="do_not_have_account">Belum punya akun?</string>
+    <string name="sign_up_here">Daftar Disini</string>
+    <string name="profile">Profile</string>
+    <string name="go_premium">Go Premium</string>
+    <string name="name_exp">Azel</string>
+    <string name="name">Nama</string>
+    <string name="gender">Jenis Kelamin</string>
+    <string name="skin_type">Jenis Kulit</string>
+    <string name="birth_date">Tanggal Lahir</string>
+    <string name="date_exp">10/10/2000</string>
+    <string name="email_exp">azel@gmail.com</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="background">Background</string>
+    <string name="image_profile">Image Profile</string>
+    <string name="add_image">Add Image</string>
+    <string name="setting">Pengaturan</string>
+    <string name="sign_out">Keluar</string>
 
     <string-array name="faq">
         <item>Cara mengakses foto yang telah discan?</item>

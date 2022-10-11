@@ -30,17 +30,17 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val logout : Button = binding.btnLogout
+        //val logout : Button = binding.btnLogout
 
         mAuth = Firebase.auth
 
-        logout.setOnClickListener {
-            mAuth.signOut()
-            val i = Intent(this@ProfileFragment.requireActivity(), MainActivity::class.java)
-            startActivity(i)
-            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            activity?.finish()
-        }
+//        logout.setOnClickListener {
+//            mAuth.signOut()
+//            val i = Intent(this@ProfileFragment.requireActivity(), MainActivity::class.java)
+//            startActivity(i)
+//            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+//            activity?.finish()
+//        }
     }
 
 }
